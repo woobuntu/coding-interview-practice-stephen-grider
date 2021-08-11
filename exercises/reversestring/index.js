@@ -11,8 +11,7 @@ function reverse(str) {
   // 이렇게 풀라고 낸 문제는 아니겠지...
 
   let reversedStr = "";
-  const lastIndex = str.length - 1;
-  for (let index = lastIndex; index >= 0; index--) reversedStr += str[index];
+  for (const char of str) reversedStr = char + reversedStr;
   return reversedStr;
 }
 
