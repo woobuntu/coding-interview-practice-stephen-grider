@@ -6,18 +6,21 @@
 // maxChar("apple 1231111") === "1"
 
 function maxChar(str) {
-  const hashOfInputString = str
-    .split("")
-    .reduce(
-      (hash, char) => (
-        hash.hasOwnProperty(char) ? hash[char]++ : (hash[char] = 1), hash
-      ),
-      {}
-    );
-  return Object.entries(hashOfInputString).sort(
-    ([keyOfFormer, countOfFormer], [keyOfLatter, countOfLatter]) =>
-      countOfFormer > countOfLatter ? -1 : 1
-  )[0][0];
+  const hashOfInputString = {};
+
+  let maxCount = 1;
+  let mostFrequentlyUsedChar = str[0];
+
+  for (const char of str) {
+    if (hashOfInputString.hasOwnProperty(char)) {
+      hashOfInputString[char]++;
+      if (hashOfInputString[char] > maxCount) mostFrequentlyUsedChar = char;
+    } else {
+      hashOfInputString[char] = 1;
+    }
+  }
+
+  return mostFrequentlyUsedChar;
 }
 
 module.exports = maxChar;
