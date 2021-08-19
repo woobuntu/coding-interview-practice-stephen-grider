@@ -12,6 +12,13 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    let notNumber = "";
+    if (i % 3 == 0) notNumber += "fizz";
+    if (i % 5 == 0) notNumber += "buzz";
+    console.log(notNumber || i);
+  }
+}
 
 module.exports = fizzBuzz;
