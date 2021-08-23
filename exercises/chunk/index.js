@@ -10,11 +10,14 @@
 
 function chunk(array, size) {
   const result = [];
-  while (array.length) {
+  let index = 0;
+  while (index < array.length) {
     const subArray = [];
-    for (let i = 0; i < size; i++) {
-      if (array[0]) subArray.push(array.shift());
-      else break;
+    while (subArray.length < size) {
+      if (array[index]) {
+        subArray.push(array[index]);
+        index++;
+      } else break;
     }
     result.push(subArray);
   }
